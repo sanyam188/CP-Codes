@@ -1,0 +1,43 @@
+{
+	ll T;
+	cin>>T;
+	while(T--)
+	{
+		ll n,m,k,l;
+		cin>>n>>m>>k>>l;
+		ll ar[n+1],kk[n+1];
+		for(ll i=0;i<n;i++)
+		{
+			cin>>ar[i];
+		}
+		ar[n]=k;
+		sort(ar,ar+n+1);
+		
+		ll time=0,min=10000000000;
+		for(ll i=0;i<=n;i++)
+		{
+			time=0;
+			kk[i]=m+i-(ar[i]/l);
+			//cout<<"kk"<<ar[i];
+			if(ar[i]%l==0)
+			{
+				time+=(kk[i]+1)*l;
+			}
+			else
+			{
+				//cout<<"i"<<i<<" "<<"kk"<<kk[i];
+				time=kk[i]*l;
+				time+=(l-(ar[i]%l));
+			}
+			//cout<<time<<"  ";			
+			if(time<min)
+			{
+				min=time;
+				
+			}
+			
+		}
+		
+		cout<<min<<endl;
+	}
+}
